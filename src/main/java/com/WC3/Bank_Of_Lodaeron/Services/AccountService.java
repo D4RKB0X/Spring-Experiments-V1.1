@@ -20,6 +20,9 @@ public class AccountService {
     }
 
     public Account createAccount(String name) {
+        if(name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be blank nor null!");
+        }
         Account inputAcc = new Account();
 
         inputAcc.setName(name);
@@ -29,6 +32,10 @@ public class AccountService {
     }
 
     public Account gainGold(Long id, double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero!");
+        }
+
         Account inputAcc = accRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Account not found!"));
 
@@ -40,6 +47,10 @@ public class AccountService {
     }
 
     public Account spendGold(Long id, double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero!");
+        }
+
         Account inputAcc = accRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Account not found!"));
 

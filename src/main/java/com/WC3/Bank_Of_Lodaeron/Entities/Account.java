@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Account {
@@ -12,7 +14,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name cannot be blank!")
     private String name;
+
+    @Min(value = 0, message = "Balance cannot be negative!")
     private double balance;
 
     public Account() {}
@@ -25,7 +30,7 @@ public class Account {
     public String getName() { return name; }
     public double getBalance() { return balance; }
 
-    public void setID(Long ID) { this.id = id; }
+    public void setID(Long ID) { this.id = ID; }
     public void setName(String name) { this.name = name; }
     public void setBalance(double balance) { this.balance = balance; }
 }

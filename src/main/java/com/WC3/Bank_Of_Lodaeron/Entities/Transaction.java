@@ -1,6 +1,9 @@
 package com.WC3.Bank_Of_Lodaeron.Entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +16,7 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionType inputType;
 
+    @Min(value = 0, message = "Amount cannot be negative!")
     private double amount;
     private LocalDateTime timeStamp;
 
