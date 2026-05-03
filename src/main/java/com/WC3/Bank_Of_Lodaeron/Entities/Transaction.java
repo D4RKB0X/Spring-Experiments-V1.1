@@ -2,7 +2,6 @@ package com.WC3.Bank_Of_Lodaeron.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
 
